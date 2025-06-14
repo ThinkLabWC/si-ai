@@ -3,13 +3,10 @@ package com.siai.api.token.service;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
 
-import java.security.Key;
 import java.util.Date;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -23,7 +20,6 @@ import com.siai.domain.service.UserService;
 import com.siai.global.security.util.JwtUtil;
 
 @ExtendWith(MockitoExtension.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class TokenServiceTest {
 
 	@InjectMocks
@@ -34,20 +30,6 @@ class TokenServiceTest {
 
 	@Mock
 	JwtUtil jwtUtil;
-	private String secretKey;
-	private String accessTokenExpirationTime;
-	private String refreshTokenExpirationTime;
-	private Key base64EncodedSecretKey;
-
-	@BeforeAll
-	public void init(){
-		// secretKey = "jun12312412412312312312412312312421412jun12312412412312312312412312312421412jun12312412412312312312412312312421412";
-		// accessTokenExpirationTime = "900000";
-		// refreshTokenExpirationTime = "1209600000";
-		// jwtUtil = new JwtUtil(secretKey, accessTokenExpirationTime, refreshTokenExpirationTime);
-		// base64EncodedSecretKey = jwtUtil.getKeyFromBase64EncodedKey(secretKey);
-		accessTokenExpirationTime = "900000";
-	}
 
 	@Test
 	@DisplayName("RT에 의해 AT를 재발급한다.")
