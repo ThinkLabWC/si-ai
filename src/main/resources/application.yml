@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      format_sql: true
+      dialect: org.hibernate.dialect.MySQL8InnoDBDialect
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:mysql://localhost:3306/sionic?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ENC(jec8vKAsSeZpbjjIinQpjQ==)
+    password: ENC(MtsXD0psWswgmYbrY5u1iw==)
+
+springdoc:
+  packages-to-scan: com.siai.api
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  cache:
+    disabled: true              # 캐시 사용 여부, true => Swagger UI와 API 문서가 매 요청마다 새로 생성하여 최신 정보 반영
+  api-docs:
+    path: /api-docs
+    groups:
+      enabled: true
+  swagger-ui:
+    disable-swagger-default-url: true   #디폴트 페이지 안나오게
+    enabled: true               # Swagger UI 사용여부 : 접근 경로 => <http://localhost:8080/swagger-ui/index.html>
+    path: /demo-ui.html         # Swagger UI 추가 접근 경로 => <http://localhost:8080/demo-ui.html>
+    tags-sorter: alpha          # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
+    operations-sorter: alpha    # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
+  override-with-generic-response: false # 일반화된 응답 사용 여부 결정
+
+jwt:
+  secret: ENC(XoNzoPVD2ltlIjiOpLyGM/tyepsQWzQ3FYEbu1Y8snWM+PEWobqMpkaD9+IXiVPR16JruwhLWzXdVDpJy/UDIA==)
+  access-token-expiration-time: 900000  # 15? 1000(ms) x 60(s) x 15(m)
+  refresh-token-expiration-time: 1209600000 # 2? 1000(ms) x 60 (s) x 60(m) x 24(h) x 14(d)
+
+jasypt:
+  encryptor:
+    password: ${PASSWORD}

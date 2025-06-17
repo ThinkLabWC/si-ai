@@ -1,0 +1,8 @@
+POST {{local}}/api/user
+Content-Type: application/json
+
+{
+  "username": "ss",
+  "password": "1234",
+  "email": "test@test.com"
+}
